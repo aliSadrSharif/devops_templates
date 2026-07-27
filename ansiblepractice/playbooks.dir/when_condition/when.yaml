@@ -1,0 +1,15 @@
+---
+- name: Start docker nginx:latest
+  hosts: all
+  gather_facts: true
+  become: false 
+
+  tasks:
+    - name: Show VM details
+      debug:
+        msg: "{{ ansible_distribution }} {{ ansible_distribution_major_version }} {{ ansible_default_ipv4.address }}"
+    
+    - name: when condition
+      debug: 
+        msg: "This task applied when ipv4 equal to '185.204.168.236'"
+      when: ansible_default_ipv4.address == "185.204.168.236"

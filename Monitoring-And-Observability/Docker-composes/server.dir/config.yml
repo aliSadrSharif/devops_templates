@@ -1,0 +1,41 @@
+global:
+  scrape_interval: 1m
+  evaluation_interval: 10s
+
+rule_files:
+  - rules.yml
+  - memory-recording-rules.yml
+
+alerting:
+  alertmanagers:
+   - static_configs:
+     - targets:
+        - alert-manager:9093
+
+scrape_configs:
+ - job_name: monitoring
+   scrape_interval: 1m
+   static_configs:
+    - targets:
+       - prometheus:9090
+
+ - job_name: node-exporter
+   scrape_interval: 10s
+   metrics_path: /metrics
+   static_configs:
+    - targets:
+       - node-exporter:9100
+
+ - job_name: load-balancer
+   scrape_interval: 1m
+   file_sd_configs:
+     - files:
+        - "/home/ali/wd/Monitoring-And-Observability/Docker-composes/server.dir/loadbalancer.yml"
+   static_configs:
+    - targets:
+       - load-balancer:9100
+
+ - job_name: alertmanager
+   static_configs:
+    - targets:
+       - 0.0.0.0:9093

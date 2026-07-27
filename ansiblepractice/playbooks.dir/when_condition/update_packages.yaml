@@ -1,0 +1,14 @@
+---
+- name: Start docker nginx:latest
+  hosts: all
+  gather_facts: true
+  become: true
+
+  tasks:
+    - name: Show VM details
+      debug:
+        msg: "{{ ansible_distribution }} {{ ansible_distribution_major_version }} {{ ansible_default_ipv4.address }}"
+    
+    - name: update packages
+      command: apt update -y
+      when: (ansible_pkg_mgr == "apt"  and ansible_distribution == "Ubuntu" and ansible_distribution_major_version == "24") 

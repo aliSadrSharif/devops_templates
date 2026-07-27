@@ -1,0 +1,6 @@
+groups:
+ - name: memory_rules
+   interval: 1m
+   rules:
+   - record: job:node_memory_MemFree_bytes_percent
+      expr: 100 - ((node_memory_MemFree_bytes / node_memory_MemTotal_bytes) * 100)

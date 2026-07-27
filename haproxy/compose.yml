@@ -1,0 +1,50 @@
+networks:
+  nginx:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.24.0.0/28
+          gateway: 172.24.0.1
+
+services:
+
+  lb:
+    image: haproxy:2.9-alpine
+    container_name: haproxy-lb
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8404:8404"
+    volumes:
+      - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      - ./haproxy/lb.nginx.pem:/etc/haproxy/certs/lb.nginx.pem:ro
+    networks:
+      nginx:
+        ipv4_address: 172.24.0.2    
+    restart: always
+
+  app1:
+    image: nginx:alpine
+    container_name: app1
+    volumes:
+      - ./app1/default.conf:/etc/nginx/conf.d/default.conf:ro  
+      - ./app1/index.html:/usr/share/nginx/html/index.html:ro  
+    networks:
+      nginx:
+        ipv4_address: 172.24.0.3
+  app2:
+    image: nginx:alpine
+    container_name: app2
+    volumes:
+      - ./app2/default.conf:/etc/nginx/conf.d/default.conf:ro  
+      - ./app2/index.html:/usr/share/nginx/html/index.html:ro  
+    networks:
+      nginx:
+        ipv4_address: 172.24.0.4
+  # curl:
+  #   image: curlimages/curl
+  #   container_name: curlbox
+  #   command: ["sleep", "infinity"]
+  #   networks:
+  #     nginx:
+  #       ipv4_address: 172.24.0.5

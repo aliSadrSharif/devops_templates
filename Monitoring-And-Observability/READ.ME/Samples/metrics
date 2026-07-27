@@ -1,0 +1,12 @@
+{
+    "timestamp": "2024-01-31T14:20:00Z",
+    "metric_name": "api_response_time",
+    "value": 247.5,
+    "unit": "milliseconds",
+    "service": "payment_api",
+    "endpoint": "/process-payment",
+    "tags": {
+      "environment": "production",
+      "region": "us-west-2"
+    }
+  }

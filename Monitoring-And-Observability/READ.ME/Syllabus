@@ -1,0 +1,227 @@
+
+---
+
+# 🎥 **20-Hour Observability & Monitoring Video Series — Complete Curriculum**
+
+Below is a structure you can use directly as a **course syllabus**.
+
+---
+
+# **Module 1 — Foundations (1.5 hours)**
+
+### 🔹 *Observability vs Monitoring – Definitions & Mindset*
+
+* Why engineering teams need monitoring
+* What is monitoring?
+* Black-box vs White-box monitoring
+* Push vs Pull models
+* Observability: the deeper meaning
+* Observability vs Monitoring: real-world comparisons
+* The 3 Pillars: **Metrics, Logs, Traces**
+* What is Open telemetry (OTeL) standard
+* Telemetry data types (events, profiles, exceptions, RUM)
+
+---
+
+# **Module 2 — Metrics Fundamentals (2 hours)**
+
+### 🔹 *Metrics Concepts*
+
+* Types: Gauge, Counter, Histogram, Summary
+* Cardinality (the silent killer)
+* Labels best practices
+* Prometheus exposition format
+
+### 🔹 *Visualization & Dashboards*
+
+* Grafana basics
+* Good vs bad dashboards
+* RED & USE methodologies
+* Install and setup
+
+---
+
+# **Module 3 — Prometheus Deep Dive (3 hours)**
+
+### 🔹 *Architecture*
+
+* Prometheus Server
+* TSDB
+* Service Discovery
+* Exporters
+* Pushgateway
+* Prometheus Federation
+
+### 🔹 *PromQL Essentials*
+
+* Selectors, aggregations, functions
+* Real examples with CPU, Memory, App metrics
+* Recording rules & alerting rules
+
+### 🔹 *Exporters*
+
+* Node Exporter
+* Blackbox Exporter
+* Application Level Exporters
+* Custom exporter development basics (Python/Go)
+
+---
+
+# **Module 4 — Alerting & Reliability (2.5 hours)**
+
+### 🔹 *Alerting Concepts*
+
+* What is an alert?
+* Alert fatigue and noisy alerts
+* Writing good alerts
+* Multi-window/multi-burn rate alerts
+* Using SLI/SLO for meaningful alerts ↣ **SRE concepts**
+* Alert grouping, routing, silencing
+
+### 🔹 *Alertmanager*
+
+* Architecture
+* Receivers (Email, Webhook, Slack)
+* Inhibition rules
+* Templates
+
+---
+
+# **Module 5 — Logging & Log Pipelines (2.5 hours)**
+
+### 🔹 *Log Fundamentals*
+
+* What is logging?
+* Log levels (info, warn, error, trace)
+* Structured vs unstructured logs
+* JSON logging
+
+### 🔹 *Log Storage & Pipelines*
+
+* ELK stack (Elasticsearch, Logstash, Kibana)
+* Loki (Promtail → Loki → Grafana)
+* Fluentd / Fluent Bit
+* Log retention and volume issues
+* Indexing & searching strategies
+
+---
+
+# **Module 6 — Tracing & Distributed Systems (2 hours)**
+
+### 🔹 *Tracing Concepts*
+
+* Why metrics & logs are not enough
+* What is a trace? What is a span?
+* Context propagation
+* Distributed tracing end-to-end
+
+### 🔹 *Tools*
+
+* OpenTelemetry (OTEL)
+* Jaeger
+* Zipkin
+* Grafana Tempo
+
+---
+
+# **Module 7 — Service-Level Objectives (SRE Core) (1.5 hours)**
+
+### 🔹 *Reliability Framework*
+
+* Error budgets
+* SLI: choosing meaningful indicators
+* SLO: defining targets
+* Monitoring SLOs in Grafana/Prometheus
+* Burn rate alerts (fast + slow)
+
+---
+
+# **Module 8 — Synthetic Monitoring (1 hour)**
+
+### 🔹 *Active Monitoring*
+
+* Blackbox exporter
+* Browser synthetic checks
+* API synthetic checks
+* When to use synthetic vs real telemetry
+
+---
+
+# **Module 9 — Infrastructure & Platform Monitoring (1.5 hours)**
+
+### 🔹 *Servers, Containers, Cloud*
+
+* Node exporter deep dive
+* Kubernetes monitoring:
+
+  * kube-state-metrics
+  * cAdvisor
+  * Metrics-server
+  * Grafana dashboards
+* Monitoring message queues: Kafka, RabbitMQ, Redpanda
+* Monitoring databases: Redis, PostgreSQL, MongoDB
+
+---
+
+# **Module 10 — Classic Monitoring Tools (1.5 hours)**
+
+### 🔹 *Zabbix*
+
+* Zabbix architecture
+* Zabbix agents
+* Templates
+* When Zabbix is still useful
+
+### 🔹 *Nagios / Icinga*
+
+* Legacy approaches
+* Plugin-based monitoring
+
+---
+
+# **Module 11 — Modern Observability Platforms (1 hour)**
+
+### 🔹 *Commercial & Cloud Solutions*
+
+* Datadog
+* New Relic
+* Grafana Cloud
+* Azure Monitor / AWS CloudWatch
+* Splunk Observability
+* When to pick managed SaaS vs self-hosted
+
+---
+
+# **Module 12 — End-to-End Observability Architecture (1 hour)**
+
+### 🔹 *Putting It All Together*
+
+* Designing an observability stack for a real application
+* Best practices in a microservices environment
+* Cost optimization
+* Avoiding common anti-patterns
+
+---
+
+# 🎯 **Optional Bonus Topics (If you need more content)**
+
+* Profiling (Pyroscope, Parca)
+* RUM (Real User Monitoring)
+* Incident Management & On-Call
+* MLOps observability
+* Security monitoring (SIEM, IDS)
+* OpenTelemetry advanced processor pipelines
+
+---
+
+# 🔥 **If you'd like, I can also prepare:**
+
+✅ Detailed script per video
+✅ Slide deck templates
+✅ Demo scenarios (Prometheus, Grafana, Loki, Jaeger, OTEL)
+✅ A full 20-hour timeline broken by minutes
+✅ Hands-on lab exercises
+
+---
+
+If you want, I can also **package this into a full syllabus PDF** or help you create **episode-by-episode scripts**.

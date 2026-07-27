@@ -1,0 +1,18 @@
+{
+  "timestamp": "2024-01-31T14:20:00.123Z",
+  "level": "ERROR",
+  "service": "payment_service",
+  "transaction_id": "tx_789456",
+  "message": "Payment Time out to bmi",
+  "error_code": "AUTH_FAILED_001",
+  "details": {
+    "user_id": "user_123",
+    "payment_method": "credit_card",
+    "amount": 99.99,
+    "currency": "USD"
+  },
+  "stack_trace": "Error: Payment authorization failed\n    at PaymentProcessor.authorize (/src/payment.js:123)"
+}
+
+
+trace, debug, info, warn, error, fatal 

@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  haproxy-exporter:
+    image: prom/haproxy-exporter
+    networks:
+      - localprom
+    # network_mode: "host"
+    container_name: haproxy_exporter
+    command: --haproxy.scrape-uri="http://localhost:8484/haproxy?stats;csv"
+
+networks:
+ localprom:
+  driver: bridge
+  attachable: true
+  external: true
+      

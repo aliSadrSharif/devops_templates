@@ -1,0 +1,25 @@
+---
+- name: Example run_once
+  hosts: all
+  gather_facts: true
+  any_errors_fatal: True
+  serial: 3
+  become: false 
+
+  tasks:
+    - name: Show VM details
+      command: hostname
+      register: result
+      run_once: true
+    
+    - name: Print Result
+      debug: 
+        var: result.stdout_lines
+      run_once: true
+
+    # - name: When Condition
+    #   debug: 
+    #     msg: "This task applied when ipv4 equal to '185.204.168.236'"
+    #   when: ansible_default_ipv4.address == "185.204.168.236"
+    #   tags: 
+    #   - detail_report

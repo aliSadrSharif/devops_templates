@@ -1,0 +1,17 @@
+---
+- name: Example delegation
+  hosts: all
+  gather_facts: false
+  serial: 1
+  max_fail_percentage: 1
+  become: false 
+
+  tasks:
+    - name: Show VM details
+      command: hostname
+      register: result
+      delegate_to: 127.0.0.1
+    
+    - name: Print result
+      debug: 
+        var: result.stdout_lines

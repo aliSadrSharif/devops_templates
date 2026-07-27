@@ -1,0 +1,9 @@
+server {
+    listen  {{ nginx_listen_port }}
+
+    location / {
+        root {{ nginx_custom_directory }}; # Directory containing static files
+        index index.html index.htm;
+        try_files $uri $uri/ =404 # Serve 404 if files not found
+    }
+}

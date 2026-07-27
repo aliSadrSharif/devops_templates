@@ -1,0 +1,40 @@
+---
+# tasks file for my_role
+
+- name: Start Nginx Service 
+  systemd_service:
+    state: started
+    name: nginx
+  tags:
+    start_service
+
+- name: Stop Nginx Service 
+  check_mode: no
+  systemd_service:
+    state: stopped
+    name: nginx
+  tags:
+    - stop_service
+
+- name: Copy the Nginx configuration file to the host
+  template:
+    src: templates/nginx.conf.j2
+    dest: /etc/nginx/conf.d/test.conf
+  notify: reload the Nginx service
+  tags:
+    - new_config
+    
+- name: Restart Nginx Service 
+  check_mode: no
+  systemd_service:
+    state: restarted
+    name: nginx
+
+- name: Copy index.html to the Nginx directory
+  copy:
+    src: files/index.html
+    dest: "{{ nginx_custom_directory }}/index.html"
+  tags:
+    new_config
+
+

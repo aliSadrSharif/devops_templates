@@ -1,0 +1,47 @@
+http:
+  middlewares:
+    redirect-https:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    basic-auth:
+      basicAuth:
+        usersFile: /etc/traefik/pass/htpasswd
+    set-headers:
+      headers:
+        stsSeconds: 63072000
+        stsIncludeSubdomains: true
+        stsPreload: true
+        contentTypeNosniff: true
+        frameDeny: true
+        browserXssFilter: true
+    ratelimit:
+      rateLimit:
+        average: 100
+        burst: 50
+
+  routers:
+    web:
+      entryPoints: ["web"]
+      rule: "Host(`lb.nginx`)"
+      middlewares: ["redirect-https"]
+      service: webapp
+    websecure:
+      entryPoints: ["websecure"]
+      rule: "Host(`lb.nginx`)"
+      middlewares: ["basic-auth", "set-headers", "ratelimit"]
+      service: webapp
+      tls: {}
+
+  services:
+    webapp:
+      loadBalancer:
+        passHostHeader: true
+        servers:
+          - url: "http://172.24.0.3:80"
+          - url: "http://172.24.0.4:80"
+
+tls:
+  certificates:
+    - certFile: /etc/traefik/certs/fullchain.pem
+      keyFile: /etc/traefik/certs/privkey.pem

@@ -1,0 +1,29 @@
+{
+  "trace_id": "abc123xyz789",
+  "name": "checkout_process",
+  "start_time": "2024-01-31T14:20:00.000Z",
+  "duration": 1250,
+  "spans": [
+    {
+      "span_id": "span1",
+      "name": "validate_cart",
+      "start_time": "2024-01-31T14:20:00.000Z",
+      "duration": 50,
+      "service": "cart_service"
+    },
+    {
+      "span_id": "span2",
+      "name": "process_payment",
+      "start_time": "2024-01-31T14:20:00.050Z",
+      "duration": 1000,
+      "service": "payment_service"
+    },
+    {
+      "span_id": "span3",
+      "name": "send_confirmation",
+      "start_time": "2024-01-31T14:20:01.050Z",
+      "duration": 200,
+      "service": "notification_service"
+    }
+  ]
+}

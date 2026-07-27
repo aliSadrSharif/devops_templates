@@ -1,0 +1,22 @@
+---
+- name: Serial example
+  hosts: all
+  gather_facts: true
+  serial: 1
+  become: false 
+
+  tasks:
+    - name: Show VM details 1
+      debug:
+        msg: "{{ ansible_distribution }} {{ ansible_distribution_major_version }} {{ ansible_default_ipv4.address }}"
+
+    - name: Show VM details 2
+      debug:
+        msg: "{{ ansible_default_ipv4.alias }}"
+    
+    # - name: when condition
+    #   debug: 
+    #     msg: "This task applied when ipv4 equal to '185.204.168.236'"
+    #   when: ansible_default_ipv4.address == "185.204.168.236"
+    #   tags: 
+    #   - detail_report

@@ -1,0 +1,55 @@
+version: '3'
+services:
+  node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - "./exporter.dir/node-exporter.yml:/etc/node-exporter/node-exporter.yml:ro"
+    networks:
+      - localprom
+    ports:
+      - 9100:9100
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    networks:
+      - localprom
+    ports:
+      - 9000:3000
+  alert-manager:
+    image: prom/alertmanager
+    volumes:
+      - "./alertmanger.dir/alertmanager.yml:/alertmanager/alertmanager.yml:ro"
+    networks:
+      - localprom
+    ports:
+      - 9093:9093
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - "./server.dir/prometheus.yml:/etc/prometheus/prometheus.yml:ro"
+      - "./server.dir/rules.yml:/etc/prometheus/rules.yml:ro"
+      - "./server.dir/recording-rules/memory-recording-rules.yaml:/etc/prometheus/memory-recording-rules.yaml:ro"
+    networks:
+      - localprom
+    ports:
+      - 9090:9090
+  # haproxy:
+  #   image: haproxy:2.3.2-alpine
+  #   container_name: haproxy
+  #   command: haproxy -f /usr/local/etc/haproxy/haproxy.cfg
+  #   volumes:
+  #     - ./HAproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+  #   network_mode: "host"
+networks:
+  localprom:
+    driver: bridge
+
+
+# My grafana service 
+  
+    # volumes:
+    #   - grafana-data:/var/lib/grafana
+# Explicitly define the persistent volume for your data storage
+# volumes:
+#   grafana-data:
+#     external: true
