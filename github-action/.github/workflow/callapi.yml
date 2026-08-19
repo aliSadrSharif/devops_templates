@@ -1,0 +1,4 @@
+- name: Call
+  run: curl: https://api.example.com
+  env:
+      API_KEY: ${{ secrets.API_KEY }}

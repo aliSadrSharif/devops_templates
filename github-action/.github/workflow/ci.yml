@@ -1,0 +1,23 @@
+name: node CI
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runes-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install node
+        uses: actions/setup-node@v4
+        white:
+          node-version: '18'
+
+      - name: install dependencies
+        run: npm install
+
+      - name: run tests
+        run: npm test      
