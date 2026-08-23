@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: nginx
+    namespace: default
+spec:
+  containers:
+    - name: nginx
+      image: nginx:latest
+      imagePullPolicy: IfNotPresent
+      command: ["nginx", "-c", "/etc/nginx/nginx.conf"]
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      resources:
+        requests:
+          cpu: 100m
+          memory: 100Mi
+        limits:
+          cpu: 1500m
+          memory: 2Gi
+        env:
+          - name: TZ
+            value: asia/tehran
+  restartPolicy: Always          
+
+# resources are defined to limit the resources that the pod can use
+# requests are the minimum resources that the pod can use
+# limits are the maximum resources that the pod can use
+# race condition is a condition where two or more processes or threads access and modify the same data concurrently, and the final outcome depends on the sequence of their execution.
+# if the pod requests more resources than the limits, the pod will be killed
+# if the pod requests less resources than the limits, the pod will be killed
+# if the pod requests more resources than the limits, the pod will be killed

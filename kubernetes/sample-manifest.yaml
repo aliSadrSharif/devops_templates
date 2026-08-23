@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: service
+metadata:
+  namespace: nginx
+  name: sample-application
+  labels:
+    app: sample-application
+spec:
+  ports:
+    - port: 80
+      targetport: 9990
+      name: sample-application
+  selector:
+    app: sample-application
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample-application
+  name: sample-application
+  namespace: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-application
+  template:
+    metadata:
+      labels:
+        app: sample-application
+      name: sample-application
+    spec:
+      containers:
+        - name: sample-application
+          image: nginx:latest
+      restartPolicy: Always
